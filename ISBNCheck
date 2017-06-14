@@ -1,21 +1,17 @@
-function doUniversalISBNCheckDigit(strKey, Mod){
+function doISBNCheckDigit(checkNum, modNum){
 	var isCorrect = false;
 	var checkDigit = 0;
-	var strLen = strKey.length;
+	var strLen = checkNum.length;
 	var sum = 0;
 	var i = 0;
-	console.log(strKey);
-	console.log(Mod);
 	
 	for (i=0;i+1<strLen - 1;i++){
-		sum = sum + ((parseInt(strKey.charAt(i+1)) * (strLen - i)));
-		console.log(sum);
+		sum = sum + ((parseInt(checkNum.charAt(i+1)) * (strLen - i)));
 	}
-	console.log(sum);
 	
 	checkDigit = Mod - (sum % Mod);
 	
-	if (parseInt(strKey.charAt(strLen)) == checkDigit){
+	if (parseInt(checkNum.charAt(strLen)) == checkDigit){
 		isCorrect = true;
 		}
 	return isCorrect;
