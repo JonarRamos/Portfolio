@@ -1,0 +1,34 @@
+function doLuhnCheck(strKey, Mod){
+	var isCorrect = false;
+	var strLen = strKey.length;
+	var sum = 0;
+	var i = 2;
+	var x = parseInt(strKey.charAt(strLen - 1));
+	//console.log(strKey);
+	//console.log(Mod);
+	//console.log(strLen);
+	
+	
+	for (; i <= strLen; i++){
+		var a = (parseInt(strKey.charAt(strLen - i)));
+		console.log("Num at " + (strLen - i) + " is " + a);
+		if (i % 2 != 0){
+	    	sum = sum + a;
+		} else {
+			console.log("Num at " + (strLen - i) + " which is " + a + " will be multiplied.");
+			if ((a * 2) > 9){
+				sum = sum + (a * 2) - 9;
+			} else {
+				sum = sum + (a * 2);
+			}
+		}
+		console.log("sum at " + (strLen - i) + " is " + sum);
+	}
+	console.log("Multiplied digits is " + sum * 9);
+	var prod = (sum * 9).toString();
+	var checkDigit = parseInt(prod.charAt((prod.length - 1)));
+	if (x == checkDigit){
+		isCorrect = true;
+	}
+	return isCorrect;
+}
