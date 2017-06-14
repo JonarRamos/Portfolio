@@ -1,0 +1,22 @@
+function doUniversalISBNCheckDigit(strKey, Mod){
+	var isCorrect = false;
+	var checkDigit = 0;
+	var strLen = strKey.length;
+	var sum = 0;
+	var i = 0;
+	console.log(strKey);
+	console.log(Mod);
+	
+	for (i=0;i+1<strLen - 1;i++){
+		sum = sum + ((parseInt(strKey.charAt(i+1)) * (strLen - i)));
+		console.log(sum);
+	}
+	console.log(sum);
+	
+	checkDigit = Mod - (sum % Mod);
+	
+	if (parseInt(strKey.charAt(strLen)) == checkDigit){
+		isCorrect = true;
+		}
+	return isCorrect;
+}
